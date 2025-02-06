@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0" version="26.0.11">
+  <diagram name="Page-1" id="c4Ng9LbrXWd9DPtoYD2i">
+    <mxGraphModel dx="1357" dy="688" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mdUKLaHNVFVC109VXwPA-35" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="430" width="140" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-34" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="430" width="140" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-2" target="mdUKLaHNVFVC109VXwPA-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-2" target="mdUKLaHNVFVC109VXwPA-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-2" target="mdUKLaHNVFVC109VXwPA-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-2" target="mdUKLaHNVFVC109VXwPA-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-2" target="mdUKLaHNVFVC109VXwPA-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-2" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry y="190" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-3" target="mdUKLaHNVFVC109VXwPA-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-3" value="Create New Character" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-5" value="Set Character Values" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-7" value="&lt;div&gt;Ex: name,&lt;/div&gt;&lt;div&gt;gold amount,&lt;/div&gt;&lt;div&gt;marital Status&lt;br&gt;&lt;/div&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-8" target="mdUKLaHNVFVC109VXwPA-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-8" value="UserLogIn" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="340" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-10" target="mdUKLaHNVFVC109VXwPA-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-10" value="UserCreateAccount" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="340" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-12" target="mdUKLaHNVFVC109VXwPA-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-12" value="Information sent to backend" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-13" target="mdUKLaHNVFVC109VXwPA-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-13" value="input processed for sanitization" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="450" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-16" target="mdUKLaHNVFVC109VXwPA-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-16" value="Information compared to backend" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-17" target="mdUKLaHNVFVC109VXwPA-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-17" value="input processed for sanitization" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="450" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-20" target="mdUKLaHNVFVC109VXwPA-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-20" target="mdUKLaHNVFVC109VXwPA-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mdUKLaHNVFVC109VXwPA-20" target="mdUKLaHNVFVC109VXwPA-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-20" value="User chooses character" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-22" value="User calculates taxes" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-24" value="User changes character values" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-26" value="delete character" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-28" value="delete account" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="340" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-30" value="Log user in" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="710" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mdUKLaHNVFVC109VXwPA-37" value="These portions (in the box) may not be a part of the use cases since it is backend and business logic however it is good to keep them in mind" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="550" width="160" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
