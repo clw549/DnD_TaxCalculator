@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Connects to sql server",
   "type": "module",
-  "main": "server.js",
+  "main": "backend/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node backend/index.js"
   },
   "author": "Ciaran",
   "license": "ISC",
