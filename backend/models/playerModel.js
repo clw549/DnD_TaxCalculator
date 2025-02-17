@@ -13,12 +13,23 @@ export const getPlayers = async () => {
 
 
 // query specific player
-export const getPlayerById = async(id) => {
+export const getPlayerByName = async(name) => {
     try {
-        const [result] = await db.query("SELECT * FROM Player WHERE p_id = ?", [id]);
+        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ?", [name]);
         return result.length ? result[0] : null; 
     } catch (error) {
         throw new Error(`Failed to get player: ${error.message}`);
+    }
+}
+
+
+// log in player
+export const authenticatePlayer = async(name, password) => {
+    try {
+        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ? AND p_password = ?", [name, password]);
+        return result.length ? result[0] : null; 
+    } catch (error) {
+        throw new Error(`Failed to log in: ${error.message}`);
     }
 }
 
