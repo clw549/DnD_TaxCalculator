@@ -27,6 +27,7 @@ export const getPlayerById = async(id) => {
 export const insertPlayer = async (data) => {
     try {
         const { p_name, p_password } = data;
+
         const [result] = await db.query(
             "INSERT INTO Player (p_name, p_password) VALUES (?, ?)", 
             [p_name, p_password]
