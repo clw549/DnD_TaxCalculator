@@ -21,8 +21,7 @@
 
   <p>or</p>
 
-  <!-- haven't made a log in page yet, but this should redirect to there -->
-  <button @click.prevent="">Log In</button>
+  <router-link to="/login">Log In</router-link>
 </div>
 </template>
 
