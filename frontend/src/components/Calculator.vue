@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div>
-    <h2>Dungeons & Dragons Tax Calculator</h2>
+  <h2>Dungeons & Dragons Tax Calculator</h2>
 
+  <form @submit.prevent="calculateTax">
     <!-- v-model binds the input value and the data property stored -->
     <label>Gold:</label>
     <input type="number" v-model="gold" />
@@ -18,12 +18,11 @@
       <option value="n">Single</option>
       <option value="y">Married</option>
     </select>
-  </div>
-  
-  <div>
-    <button @click="calculateTax">Calculate Tax</button>
-    <h3>Total Tax: {{ goldTax }} gold, {{ silverTax }} silver, {{ copperTax }} copper</h3>
-  </div>
+
+    <button type="submit">Calculate Tax</button>
+  </form>
+
+  <h3>Total Tax: {{ goldTax }} gold, {{ silverTax }} silver, {{ copperTax }} copper</h3>
 </div>
 </template>
 
