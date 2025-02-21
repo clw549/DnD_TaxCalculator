@@ -3,7 +3,7 @@ import {
     getPlayerByName,
     insertPlayer,
     updatePlayerById,
-    deletePlayerById,
+    deletePlayerCredentials,
     authenticatePlayer
 } from "../models/playerModel.js";
 
@@ -49,8 +49,12 @@ export const logInPlayer = async(req, res) => {
             return res.status(404).json({ message: "Could not log in" });
         }
 
+        console.log(result);
+        res.data = {p_id: result.p_id};
+
         res.json(result);
     } catch (error) {
+        console.log("logInPlayer() err: playerController.js");
         res.status(500).send(error.message);
     }
 };
@@ -107,9 +111,11 @@ export const updatePlayer = async(req, res) => {
 // delete player
 export const deletePlayer = async(req, res) => {
     try {
-        const result = await deletePlayerById(req.params.id);
+        console.log(req);
+        const { p_name, p_password } = req.body;
+        const result = await deletePlayerCredentials(p_name, p_password);
 
-        if (result.affectedRows === 0) {
+        if (result.affectedRows == 0) {
             return res.status(404).json({ message: "Player not found" });
         }
 

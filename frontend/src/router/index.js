@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import LogInView from "../views/LogInView.vue"
+import deleteAccountView from "../views/DeleteAccount.vue"
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     name: 'login',
     component: LogInView
   },
+  {
+    path: '/deleteAccount', 
+    name: 'deleteAccount',
+    component: deleteAccountView
+  }
 ]
 
 const router = createRouter({

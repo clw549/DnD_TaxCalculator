@@ -3,7 +3,8 @@ import {
     getCharacterByNameId,
     insertCharacter,
     updateCharacterByNameId,
-    deleteCharacterByNameId
+    deleteCharacterByNameId,
+    showCharacters
 } from "../models/characterModel.js";
 
 
@@ -13,7 +14,9 @@ import {
 // get all characters
 export const showCharacters = async (req, res) => {
     try {
-        const result = await getPlayers();
+        console.log("showing characters");
+        console.log(req.body);
+        const result = await getCharacters(req.body.player_id);
         res.json(result);
     } catch (error) {
         res.status(500).send(error.message);

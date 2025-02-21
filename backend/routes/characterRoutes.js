@@ -11,10 +11,9 @@ const router = express.Router();
 
 
 router.get("/characters", showCharacters);
-router.get("/characters/:c_name/:player_id", showCharacter);
 router.post("/characters", createCharacter);
-router.patch("/characters/:c_name/:player_id", updateCharacter);
-router.delete("/characters/:c_name/:player_id", deleteCharacter);
+router.patch("/characters/:c_name/", updateCharacter);
+router.delete("/characters/:c_name/", deleteCharacter);
 
 
 export default router

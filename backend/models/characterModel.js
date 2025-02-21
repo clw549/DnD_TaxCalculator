@@ -2,9 +2,9 @@ import db from "../config/database.js";
 
 
 // query all characters
-export const getCharacters = async () => {
+export const getCharacters = async (id) => {
     try {
-        const [result] = await db.query("SELECT * FROM Playable_character");
+        const [result] = await db.query("SELECT * FROM Playable_character WHERE p_id = ?", id);
         return result;
     } catch (error) {
         throw new Error(`Failed to get characters: ${error.message}`);

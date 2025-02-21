@@ -1,13 +1,6 @@
-
-
-
-create database if not exists DND_TAX_DB;
-
-use DND_TAX_DB;
-
 drop table if exists Player;
 create table if not exists Player(
-p_id INT NOT NULL,
+p_id INT NOT NULL AUTO_INCREMENT,
 p_name VARCHAR(255),
 p_password VARCHAR(255),
 PRIMARY KEY (p_id)
@@ -24,12 +17,3 @@ married VARCHAR(1),
 PRIMARY KEY (c_name, player_id),
 FOREIGN KEY (player_id) REFERENCES Player(p_id)
 );
-
-insert into Player value (1, "Ciaran", "Gertrude");
-insert into Playable_character value ("Gertrude Rolin", 20, 2, 5, 'n', 1);
-
-SELECT * FROM Player;
-SELECT * FROM Playable_character;
-SELECT p.p_name, c.c_name FROM Player p JOIN (SELECT * FROM Playable_character) c ON p.p_id = c.player_id;
-
-create user if not exists "server_operator"@"DND_TAX_DB" identified by 'rXKE;{WC6dk*2:tjm=8#VQ';

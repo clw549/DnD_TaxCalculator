@@ -73,3 +73,12 @@ export const deletePlayerById = async(id) => {
         throw new Error(`Failed to delete player ${id}: ${error.message}`);
     }
 }
+
+export const deletePlayerCredentials = async(p_name, p_password) => {
+    try {
+        const [result] = await db.query("DELETE FROM Player WHERE p_name = ? AND p_password = ?", [p_name, p_password]);
+        return result;
+    } catch (error) {
+        throw new Error(`Failed to delete player ${p_name}: ${error.message}`);
+    }
+}

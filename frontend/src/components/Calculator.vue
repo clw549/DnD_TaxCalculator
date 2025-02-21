@@ -30,6 +30,7 @@
 // ref is a specific function so it's imported with the braces
 import { ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
 
 // ref() creates a reactive variable. without this, the UI won't change without re-rendering the page
 // this is also where default values are set
@@ -42,6 +43,26 @@ const goldTax = ref(0);
 const silverTax = ref(0);
 const copperTax = ref(0);
 
+const router = useRouter();
+
+//retrieve player id for current user
+const user_id = localStorage.getItem('p_id');
+
+console.log(user_id);
+
+const getUsersCharacters = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/characters", {
+      p_id: user_id,
+    });
+
+    console.log(response.data);
+  } catch (error) {
+    console.log("User not registered.");
+    console.log(error);
+  }
+};
+getUsersCharacters();
 // values of reactive variables can only be accessed with .value
 const calculateTax = () => {
   // 10 copper = 1 silver, 10 silver = 1 gold (100 copper = 1 gold)
