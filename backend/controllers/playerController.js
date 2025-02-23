@@ -15,9 +15,9 @@ import {
 export const showPlayers = async (req, res) => {
     try {
         const result = await getPlayers();
-        res.json(result);
+        res.status(200).json({ success: true, data: result });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -28,12 +28,12 @@ export const showPlayer = async(req, res) => {
         const result = await getPlayerByName(req.params.p_name);
 
         if (!result) {
-            return res.status(404).json({ message: "Player not found" });
+            return res.status(404).json({ success: false, data: "Player not found" });
         }
 
-        res.json(result);
+        res.status(200).json({ success: true, data: result });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -46,16 +46,16 @@ export const logInPlayer = async(req, res) => {
         const result = await authenticatePlayer(p_name, p_password);
 
         if (!result) {
-            return res.status(404).json({ message: "Could not log in" });
+            return res.status(404).json({ success: false, data: "Could not log in" });
         }
 
         console.log(result);
         res.data = {p_id: result.p_id};
 
-        res.json(result);
+        res.status(200).json({ success: true, data: result });
     } catch (error) {
         console.log("logInPlayer() err: playerController.js");
-        res.status(500).send(error.message);
+        res.status(500).send({ success: false, data: error });
     }
 };
 
@@ -67,18 +67,15 @@ export const createPlayer = async (req, res) => {
 
         // validation (maybe add more checks later)
         if (!p_name || !p_password) {
-            return res.status(400).json({ error: "Player name and password are required" });
+            return res.status(400).json({ success: false, data: "Player name and password are required" });
         }
 
         const result = await insertPlayer({ p_name, p_password });
 
         // 201 status is used for succesful resource creation
-        res.status(201).json({
-            message: "Player created successfully",
-            p_id: result.insertId,
-        });
+        res.status(201).json({ success: true, p_id: result.insertId });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -91,19 +88,19 @@ export const updatePlayer = async(req, res) => {
 
         // validation (maybe add more checks later)
         if (!p_name || !p_password) {
-            return res.status(400).json({ error: "Player name and password are required" });
+            return res.status(400).json({ success: false, data: "Player name and password are required" });
         }
 
         const result = await updatePlayerById(id, { p_name, p_password })
 
         // no rows affected means nothing was updated
         if (result.affectedRows === 0) {
-            return res.status(404).json({ error: "Player not found" });
+            return res.status(404).json({ success: false, data: "Player not found" });
         }
 
-        res.json({ message: "Player updated successfully" });
+        res.json({ success: true, data: "Player updated successfully" });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).send({ success: false, data: error });
     }
 };
 
@@ -116,11 +113,11 @@ export const deletePlayer = async(req, res) => {
         const result = await deletePlayerCredentials(p_name, p_password);
 
         if (result.affectedRows == 0) {
-            return res.status(404).json({ message: "Player not found" });
+            return res.status(404).json({ success: false, data: "Player not found" });
         }
 
-        res.json({ message: "Player deleted successfully" });
+        res.json({ success: true, data: "Player deleted successfully" });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).send({ success: false, data: error });
     }
 };

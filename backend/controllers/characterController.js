@@ -15,9 +15,9 @@ export const displayCharacters = async (req, res) => {
         const { p_id } = req.body;
         console.log(req);
         const result = await getCharacters(p_id);
-        res.json(result);
+        res.status(200).json({ success: true, data: result });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -30,12 +30,12 @@ export const showCharacter = async (req, res) => {
         const result = await getCharacterById(c_name, player_id);
 
         if (!result) {
-            return res.status(404).json({ message: "Character not found" });
+            return res.status(404).json({ success: false, data: "Character not found" });
         }
 
-        res.json(result);
+        res.status(200).json({ success: true, data: result });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -46,17 +46,14 @@ export const createCharacter = async (req, res) => {
         
 
         if (!name || !p_id) {
-            return res.status(400).json({ error: "Character name and player ID are required" });
+            return res.status(400).json({ success: false, data: "Character name and player ID are required" });
         }
 
         const result = await insertCharacter({ name, p_id, gold, silver, copper, married });
 
-        res.status(201).json({
-            message: "Character created successfully",
-            insertedId: result.insertId,
-        });
+        res.status(201).json({ success: true, insertedId: result.insertId });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -68,18 +65,18 @@ export const updateCharacter = async (req, res) => {
         const { gold, silver, copper, married } = req.body;
 
         if (!gold && !silver && !copper && married === undefined) {
-            return res.status(400).json({ error: "At least one field to update is required" });
+            return res.status(400).json({ success: false, data: "At least one field to update is required" });
         }
 
         const result = await updateCharacterById(c_name, player_id, { gold, silver, copper, married });
 
         if (!result) {
-            return res.status(404).json({ error: "Character not found" });
+            return res.status(404).json({ success: false, data: "Character not found" });
         }
 
-        res.json({ message: "Character updated successfully" });
+        res.status(200).json({ success: true, data: "Character updated successfully" });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ success: false, data: error });
     }
 };
 
@@ -92,11 +89,11 @@ export const deleteCharacter = async (req, res) => {
         const result = await deleteCharacterById(c_name, player_id);
 
         if (!result) {
-            return res.status(404).json({ message: "Character not found" });
+            return res.status(404).json({ success: false, data: "Character not found" });
         }
 
-        res.json({ message: "Character deleted successfully" });
+        res.status(200).json({ success: true, data: "Character deleted successfully" });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ success: false, data: error });
     }
 };
