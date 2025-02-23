@@ -9,7 +9,6 @@ import {
 
 // This file is used to call all the methods from characterModel.js
 
-
 // get all characters
 export const displayCharacters = async (req, res) => {
     try {
@@ -43,7 +42,6 @@ export const showCharacter = async (req, res) => {
 // create new character
 export const createCharacter = async (req, res) => {
     try {
-        console.log(req.body);
         const { name, p_id, gold, silver, copper, married } = req.body;
         
 
@@ -58,7 +56,6 @@ export const createCharacter = async (req, res) => {
             insertedId: result.insertId,
         });
     } catch (error) {
-        console.log("characterContorller.js error");
         res.status(500).json({ error: error.message });
     }
 };

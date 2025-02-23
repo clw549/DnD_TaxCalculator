@@ -1,10 +1,14 @@
 import db from "../config/database.js";
 
+//sanitizes input
+function sanitize(input) {
+    return input.replace(/['"]/g, ""); // Removes SQL-breaking characters
+}
 
 // query all characters
 export const getCharacters = async (id) => {
     try {
-        const [result] = await db.query("SELECT * FROM Playable_character WHERE player_id = ?", [id]);
+        const [result] = await db.query("SELECT * FROM Playable_character WHERE player_id = ?", [sanitize(id)]);
         return result;
     } catch (error) {
         throw new Error(`Failed to get characters: ${error.message}`);
@@ -17,7 +21,7 @@ export const getCharacterByNameId = async (c_name, player_id) => {
     try {
         const [result] = await db.query(
             "SELECT * FROM Playable_character WHERE c_name = ? AND player_id = ?", 
-            [c_name, player_id]
+            [sanitize(c_name), player_id]
         );
         return result.length ? result[0] : null; 
     } catch (error) {
@@ -32,7 +36,7 @@ export const insertCharacter = async (data) => {
         const { name, p_id, gold, silver, copper, married } = data;
         const [result] = await db.query(
             "INSERT INTO Playable_character (c_name, player_id, gold, silver, copper, married) VALUES (?, ?, ?, ?, ?, ?)",
-            [name, p_id, gold, silver, copper, married]
+            [sanitize(name), p_id, gold, silver, copper, married]
         );
         return result;
     } catch (error) {
@@ -48,7 +52,7 @@ export const updateCharacterByNameId = async (c_name, player_id, data) => {
         const { gold, silver, copper, married } = data;
         const [result] = await db.query(
             "UPDATE Playable_character SET gold = ?, silver = ?, copper = ?, married = ? WHERE c_name = ? AND player_id = ?", 
-            [gold, silver, copper, married, c_name, player_id]
+            [gold, silver, copper, married, sanitize(c_name), player_id]
         );
         return result.affectedRows > 0; 
     } catch (error) {
@@ -62,7 +66,7 @@ export const deleteCharacterByNameId = async (c_name, player_id) => {
     try {
         const [result] = await db.query(
             "DELETE FROM Playable_character WHERE c_name = ? AND player_id = ?", 
-            [c_name, player_id]
+            [sanitize(c_name), player_id]
         );
         return result.affectedRows > 0; 
     } catch (error) {

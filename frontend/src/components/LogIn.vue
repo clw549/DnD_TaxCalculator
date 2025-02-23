@@ -48,6 +48,8 @@ const logIn = async () => {
 
     alert.value = "Log In successful!";
 
+    console.log(response);
+
     localStorage.setItem('p_id', response.data.p_id);
 
     router.push("/");

@@ -1,5 +1,9 @@
 import db from "../config/database.js";
 
+//sanitizes input
+function sanitize(input) {
+    return input.replace(/['"]/g, ""); // Removes SQL-breaking characters
+}
 
 // query all players
 export const getPlayers = async () => {
@@ -15,7 +19,7 @@ export const getPlayers = async () => {
 // query specific player
 export const getPlayerByName = async(name) => {
     try {
-        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ?", [name]);
+        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ?", [sanitize(name)]);
         return result.length ? result[0] : null; 
     } catch (error) {
         throw new Error(`Failed to get player: ${error.message}`);
@@ -26,7 +30,7 @@ export const getPlayerByName = async(name) => {
 // log in player
 export const authenticatePlayer = async(name, password) => {
     try {
-        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ? AND p_password = ?", [name, password]);
+        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ? AND p_password = ?", [sanitize(name), sanitize(password)]);
         return result.length ? result[0] : null; 
     } catch (error) {
         throw new Error(`Failed to log in: ${error.message}`);
@@ -41,7 +45,7 @@ export const insertPlayer = async (data) => {
 
         const [result] = await db.query(
             "INSERT INTO Player (p_name, p_password) VALUES (?, ?)", 
-            [p_name, p_password]
+            [sanitize(p_name), sanitize(p_password)]
         );
         return { insertedId: result.insertId };
     } catch (error) {
@@ -56,7 +60,7 @@ export const updatePlayerById = async(id, data) => {
     try {
         const { p_name, p_password } = data;
         const [result] = await db.query("UPDATE Player SET p_name = ?, p_password = ? WHERE p_id = ?", 
-                                        [p_name, p_password, id]);
+                                        [sanitize(p_name), sanitize(p_password), id]);
         return result.affectedRows > 0; 
     } catch (error) {
         throw new Error(`Failed to update player ${id}: ${error.message}`);
@@ -76,7 +80,7 @@ export const deletePlayerById = async(id) => {
 
 export const deletePlayerCredentials = async(p_name, p_password) => {
     try {
-        const [result] = await db.query("DELETE FROM Player WHERE p_name = ? AND p_password = ?", [p_name, p_password]);
+        const [result] = await db.query("DELETE FROM Player WHERE p_name = ? AND p_password = ?", [sanitize(p_name), sanitize(p_password)]);
         return result;
     } catch (error) {
         throw new Error(`Failed to delete player ${p_name}: ${error.message}`);
