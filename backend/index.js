@@ -45,6 +45,7 @@ let server = app.listen(5000, function () {
 import express from "express";
 import cors from "cors";
 import router from "./routes/playerRoutes.js";
+// import router from "./routes/characterRoutes.js";
 import db from "./config/database.js"
 const PORT = 5000;
 

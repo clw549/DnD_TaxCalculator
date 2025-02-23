@@ -4,7 +4,6 @@ import {
     insertCharacter,
     updateCharacterByNameId,
     deleteCharacterByNameId,
-    showCharacters
 } from "../models/characterModel.js";
 
 
@@ -12,11 +11,11 @@ import {
 
 
 // get all characters
-export const showCharacters = async (req, res) => {
+export const displayCharacters = async (req, res) => {
     try {
-        console.log("showing characters");
-        console.log(req.body);
-        const result = await getCharacters(req.body.player_id);
+        const { p_id } = req.body;
+        console.log(req);
+        const result = await getCharacters(p_id);
         res.json(result);
     } catch (error) {
         res.status(500).send(error.message);
@@ -44,19 +43,22 @@ export const showCharacter = async (req, res) => {
 // create new character
 export const createCharacter = async (req, res) => {
     try {
-        const { c_name, player_id, gold, silver, copper, married } = req.body;
+        console.log(req.body);
+        const { name, p_id, gold, silver, copper, married } = req.body;
+        
 
-        if (!c_name || !player_id) {
+        if (!name || !p_id) {
             return res.status(400).json({ error: "Character name and player ID are required" });
         }
 
-        const result = await insertCharacter({ c_name, player_id, gold, silver, copper, married });
+        const result = await insertCharacter({ name, p_id, gold, silver, copper, married });
 
         res.status(201).json({
             message: "Character created successfully",
             insertedId: result.insertId,
         });
     } catch (error) {
+        console.log("characterContorller.js error");
         res.status(500).json({ error: error.message });
     }
 };

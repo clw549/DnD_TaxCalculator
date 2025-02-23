@@ -52,14 +52,16 @@ console.log(user_id);
 
 const getUsersCharacters = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/characters", {
-      p_id: user_id,
+    const p_id = parseInt(user_id, 10);
+    console.log(typeof(p_id));
+    const response = await axios.post("http://localhost:5000/characters/show", {
+      p_id: p_id
     });
 
     console.log(response.data);
   } catch (error) {
     console.log("User not registered.");
-    console.log(error);
+    console.log(error.response?.data?.message);
   }
 };
 getUsersCharacters();

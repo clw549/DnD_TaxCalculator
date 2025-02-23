@@ -4,7 +4,7 @@ import db from "../config/database.js";
 // query all characters
 export const getCharacters = async (id) => {
     try {
-        const [result] = await db.query("SELECT * FROM Playable_character WHERE p_id = ?", id);
+        const [result] = await db.query("SELECT * FROM Playable_character WHERE player_id = ?", [id]);
         return result;
     } catch (error) {
         throw new Error(`Failed to get characters: ${error.message}`);
@@ -29,13 +29,14 @@ export const getCharacterByNameId = async (c_name, player_id) => {
 // insert character into db
 export const insertCharacter = async (data) => {
     try {
-        const { c_name, player_id, gold, silver, copper, married } = data;
+        const { name, p_id, gold, silver, copper, married } = data;
         const [result] = await db.query(
             "INSERT INTO Playable_character (c_name, player_id, gold, silver, copper, married) VALUES (?, ?, ?, ?, ?, ?)",
-            [c_name, player_id, gold, silver, copper, married]
+            [name, p_id, gold, silver, copper, married]
         );
         return result;
     } catch (error) {
+        console.log("err in character model.js");
         throw new Error(`Failed to insert character: ${error.message}`);
     }
 };
