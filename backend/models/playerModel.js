@@ -1,4 +1,5 @@
 import db from "../config/database.js";
+import bcrypt from "bcrypt";
 
 //sanitizes input
 function sanitize(input) {
@@ -30,8 +31,16 @@ export const getPlayerByName = async(name) => {
 // log in player
 export const authenticatePlayer = async(name, password) => {
     try {
-        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ? AND p_password = ?", [sanitize(name), sanitize(password)]);
-        return result.length ? result[0] : null; 
+        const [result] = await db.query("SELECT * FROM Player WHERE p_name = ?", [sanitize(name)]);
+
+        if (!result.length) {
+            return null;
+        }
+
+        const player = result[0];
+        const isMatch = await bcrypt.compare(password, player.p_password);
+
+        return isMatch ? player : null; 
     } catch (error) {
         throw new Error(`Failed to log in: ${error.message}`);
     }
@@ -41,11 +50,13 @@ export const authenticatePlayer = async(name, password) => {
 // insert player into db
 export const insertPlayer = async (data) => {
     try {
+        const saltRounds = 10;
         const { p_name, p_password } = data;
+        const hashedPassword = await bcrypt.hash(sanitize(p_password), saltRounds);
 
         const [result] = await db.query(
-            "INSERT INTO Player (p_name, p_password) VALUES (?, ?)", 
-            [sanitize(p_name), sanitize(p_password)]
+            "INSERT INTO Player (p_name, p_password) VALUES (?, ?)",
+            [sanitize(p_name), hashedPassword]
         );
         return { insertedId: result.insertId };
     } catch (error) {
