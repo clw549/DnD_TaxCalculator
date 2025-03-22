@@ -1,0 +1,24 @@
+services:
+  gateway-api:
+    build: ./gatewayAPI
+    ports:
+      - "5000:80"
+    depends_on:
+      - character_service
+    environment:
+      - CHARACTER_SERVICE_URL=http://character_service:5001
+    networks:
+      - dungeon-tax-net
+
+  character_service:
+    build: ./character_service
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - dungeon-tax-net
+
+networks:
+  dungeon-tax-net:
+    driver: bridge
