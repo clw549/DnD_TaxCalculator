@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("submitButton").addEventListener("click", handleForm);
 });
 
-CHARACTER_SERVICE_URL = "http://localhost:5001";
+PLAYER_SERVICE_URL = "http://localhost:5001";
+CHARACTER_SERVICE_URL = "http://localhost:5002";
 
 function handleForm() {
   // Get values from the form inputs
