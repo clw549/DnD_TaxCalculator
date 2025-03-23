@@ -4,5 +4,5 @@ COPY package.json package-lock.json ./
 RUN npm install
 RUN npm install sqlite3
 COPY . .
-EXPOSE 5001
+EXPOSE 5002
 CMD ["node", "characterRoutes.js"]

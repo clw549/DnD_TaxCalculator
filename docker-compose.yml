@@ -9,11 +9,20 @@ services:
       - CHARACTER_SERVICE_URL=http://character_service:5001
     networks:
       - dungeon-tax-net
+  
+  player_service:
+    build: ./player_service
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - dungeon-tax-net
 
   character_service:
     build: ./character_service
     ports:
-      - "5001:5001"
+      - "5002:5002"
     environment:
       - NODE_ENV=production
     networks:

@@ -1,7 +1,7 @@
 CREATE CHARACTER
-curl -X POST http://localhost:5001/api/characters -H "Content-Type: application/json" -d "{\"name\": \"Pickle Rick\", \"p_id\": 123, \"gold\": 100, \"silver\": 50, \"copper\": 200, \"married\": \"m\"}"
+curl -X POST http://localhost:5002/api/characters -H "Content-Type: application/json" -d "{\"name\": \"Pickle Rick\", \"p_id\": 123, \"gold\": 100, \"silver\": 50, \"copper\": 200, \"married\": \"m\"}"
 DELETE CHARACTER 
-curl -X DELETE http://localhost:5001/api/characters -H "Content-Type: application/json" -d "{\"name\": \"Pickle Rick\", \"p_id\": 123}"
+curl -X DELETE http://localhost:5002/api/characters -H "Content-Type: application/json" -d "{\"name\": \"Pickle Rick\", \"p_id\": 123}"
 
 NOT A CURL BUT URL FOR GET COMMAND
-http://localhost:5001/api/characters
+http://localhost:5002/api/characters
