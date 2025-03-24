@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 PLAYER_SERVICE_URL = "http://localhost:5001";
 CHARACTER_SERVICE_URL = "http://localhost:5002";
+TAX_SERVICE_URL = "http://localhost:5003";
+
 
 function handleForm() {
   // Get values from the form inputs
@@ -98,3 +100,94 @@ function displayCharacters(characters) {
         characterList.appendChild(characterDiv);
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("submitTaxButton").addEventListener("click", handleTaxForm);
+  });
+
+
+function handleTaxForm() {
+    // Get values from the form inputs
+    const taxLocation = document.getElementById('tax_location').value;
+    const tax_location_id = parseInt(document.getElementById('tax_id').value);
+    const amount = parseInt(document.getElementById('tax_amount').value);
+
+  
+    // Create an object with the data
+    const locationData = {
+        tax_id: tax_location_id,
+        tax_amount: amount,
+        tax_location: taxLocation
+    };
+  console.log(TAX_SERVICE_URL+'/api/tax');
+    // Send a POST request using fetch
+    fetch(TAX_SERVICE_URL + '/api/tax', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(locationData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        alert('Tax location created successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was a problem creating the tax location.');
+    });
+  }
+  
+  // Use the environment variable for the backend URL
+  const taxServiceUrl = "${TAX_SERVICE_URL}";  // This is replaced by NGINX
+  
+  // Function to fetch character data from the backend and display it
+  function fetchTaxAmount() {
+      // Perform the GET request
+      fetch(`${TAX_SERVICE_URL}/api/tax`, { 
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        }})
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json(); // Parse JSON response
+          })
+          .then(data => {
+              console.log('Fetched tax location:', data);
+              displayTaxAmount(data);  // Call the function to display characters
+          })
+          .catch(error => {
+              console.error('Error fetching characters:', error);
+              alert('There was a problem fetching the amount.');
+          });
+  }
+  
+  // Function to dynamically generate HTML for the character list
+  function displayTaxAmount(tax) {
+      const taxAmount = document.getElementById('taxAmount');
+      taxAmount.innerHTML = ''; // Clear any previous content
+
+      tax.forEach(tax => {
+          const taxDiv = document.createElement('div');
+          taxDiv.classList.add('tax-item');
+  
+          // Populate with character details (this will depend on the structure of your objects)
+          taxDiv.innerHTML = `
+              <h3>Tax based on ${tax.tax_location}: ${(tax.tax_amount) * 35}</h3>
+          `;
+
+          // Append the character div to the list
+          taxAmount.appendChild(taxDiv);
+        });
+  }
+  
