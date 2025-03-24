@@ -31,6 +31,8 @@
             <button type="button" id="submitButton">Submit</button>
         </form>
     </div>
+
+
     <div>
       <h2>Characters</h2>
       <!-- Button to trigger the GET request -->
@@ -42,6 +44,27 @@
     </div>
 
     <script src="script.js"></script>
+    </div>
+
+    <div>
+        <h2>Tax based on location</h2>
+        <form id="taxForm">
+            <label for="tax_location">Location</label>
+            <input type="text" id="tax_location" name="tax_location" required><br>
+
+            <label for="tax_id">Tax Location Id</label>
+            <input type="number" id="tax_id" name="tax_id" required><br>
+        
+            <label for="tax_amount">Tax Amount</label>
+            <input type="number" id="tax_amount" name="tax_amount" required><br>
+
+            <button type="button" id="submitTaxButton">Submit</button>
+        </form>
+
+        <button onclick="fetchTaxAmount()">Show Amount</button>
+        <div id="taxAmount">
+            <script src="script.js"></script>
+        </div>
     </div>
 
     <script src="script.js"></script>
