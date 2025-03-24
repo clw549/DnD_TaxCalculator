@@ -28,6 +28,15 @@ services:
     networks:
       - dungeon-tax-net
 
+  tax_service:
+    build: ./tax_service
+    ports:
+      - "5003:5003"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - dungeon-tax-net
+
 networks:
   dungeon-tax-net:
     driver: bridge
