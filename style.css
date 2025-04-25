@@ -1,0 +1,13 @@
+div {
+  padding: 5px;
+  background-color: darkkhaki;
+  width:fit-content;
+  display:flexbox;
+  float:left;
+}
+
+#characterForm {
+  display:flexbox;
+  width:fit-content;
+  background-color: darkkhaki;
+}
